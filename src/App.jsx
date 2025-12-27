@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
+import { AppstoreOutlined, TagsOutlined, ShoppingOutlined } from '@ant-design/icons';
+import CategoriesPage from './pages/CategoriesPage';
+import ProductsPage from './pages/ProductsPage';
 
-function App() {
-  const [count, setCount] = useState(0)
+const { Header, Content } = Layout;
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const App = () => (
+  <BrowserRouter>
+    <Layout style={{ minHeight: '100vh' }}>
+      {/* Header con Menú de navegación */}
+      <Header style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ color: 'white', fontSize: '20px', fontWeight: 'bold', marginRight: '50px' }}>
+          <AppstoreOutlined /> Catálogo
+        </div>
+        
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['categories']}
+          items={[
+            {
+              key: 'categories',
+              icon: <TagsOutlined />,
+              label: <Link to="/categorias">Categorías</Link>
+            },
+            {
+              key: 'products',
+              icon: <ShoppingOutlined />,
+              label: <Link to="/productos">Productos</Link>
+            }
+          ]}
+        />
+      </Header>
 
-export default App
+      {/* Contenido principal */}
+      <Content style={{ padding: '0 50px', marginTop: '24px' }}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/categorias" replace />} />
+          <Route path="/categorias" element={<CategoriesPage />} />
+          <Route path="/productos" element={<ProductsPage />} />
+        </Routes>
+      </Content>
+    </Layout>
+  </BrowserRouter>
+);
+
+export default App;
