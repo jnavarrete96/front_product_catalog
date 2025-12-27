@@ -19,6 +19,7 @@ const App = () => (
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['categories']}
+          style={{ flex: 1 }}
           items={[
             {
               key: 'categories',
