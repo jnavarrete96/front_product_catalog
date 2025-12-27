@@ -1,8 +1,9 @@
+import CategoryList from '../components/categories/CategoryList';
+
 const CategoriesPage = () => (
   <div style={{ padding: '24px' }}>
-    <h1>📦 Gestión de Categorías</h1>
-    <p>Aquí irá el CRUD de categorías</p>
-  </div>
+      <CategoryList />
+ </div>
 );
 
 export default CategoriesPage;
