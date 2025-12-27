@@ -83,16 +83,6 @@ const CategoryModal = ({ open, onClose, onSuccess, editingCategory }) => {
             placeholder="Descripción de la categoría (opcional)"
           />
         </Form.Item>
-
-        {isEditing && (
-          <Form.Item
-            label="Estado"
-            name="IsActive"
-            valuePropName="checked"
-          >
-            <Switch checkedChildren="Activo" unCheckedChildren="Inactivo" />
-          </Form.Item>
-        )}
       </Form>
     </Modal>
   );
