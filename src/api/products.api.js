@@ -41,5 +41,5 @@ export const uploadBulkProducts = async (file) => {
     }
   });
   
-  return response.data;
+  return response;
 };
